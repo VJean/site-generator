@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% block title %}Projets{% endblock %}
+{% block breadcrumbs %}
+                  <li class="breadcrumb-item">
+                    <a href="projets.html">Projets</a>
+                  </li>
+{% endblock %}
+{% block content %}
+        <div class="column col-11 col-mx-auto">
+            <section class="text-justify">
+                <p>Je développe principalement en Python (ou en Bash, si Python n'apporte pas une grande plus-value et que le projet en question se résume à quelques scripts). Pour des projets nécessitant un serveur web, j'utilise Python/Flask.</p>
+                <p>Mon environnement de développement peut se résumer à un Arch Linux (<a href="https://github.com/VJean/dotfiles">mes dotfiles sont ici</a>), vim, Sublime Text, Pycharm, et une Raspberry.</p>
+                <p>Plus récemment, je m'intéresse à Rust ainsi qu'aux bases de données orientées graphes, via Neo4j.</p>
+                <p>En général, si je me lance dans un projet c'est que :
+                <ol>
+                    <li>une solution existe sûrement déjà, mais je préfère apprendre en la créant et en la mettant en place moi-même</li>
+                    <li>c'est l'occasion d'apprendre de nouvelles technos ou techniques</li>
+                    <li>il me sera probablement utile</li>
+                </ol></p>
+
+<!-- Un article = un titre, une date, un lien vers Github, le(s) language(s), ce que j'ai appris, et la présentation en elle-même -->
+            <article>
+                <h3>weather-summary &#9925; <small>(fin 2019)</small></h3>
+                <p><a href="https://github.com/VJean/weather-summary"><i class="fab fa-github-square"></i> VJean/weather-summary.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">Pushover</small> <small class="label label-rounded">API</small></p>
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>Un script déployé en crontab m'envoie tous les matins la prévision météo pour les prochaines 24h.</p>
+                        <p>Le script est configuré par un fichier .ini, qui permet de spécifier, entre autres, la latitude et la longitude de la  prévision, les unités affichées, ou encore la langue du message.</p>
+                    </div>
+                    <div class="column col-12">
+                        <figure class="figure">
+                            <img class="img-responsive p-centered" src="img/weather.png" alt="weather noti">
+                            <figcaption class="figure-caption text-center">Quelques notifications passées</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h3>100 <small>(mai 2020)</small></h3>
+                <p><a href="https://github.com/VJean/100"><i class="fab fa-github-square"></i> VJean/100.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">matplotlib</small></p>
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>Mini-projet sur le côté pendant le confinement de début 2020, où j'ai décidé de mettre en image mes éventuels progrès sportifs.</p>
+                        <p>Je reporte les différents temps dans un fichier csv, qui est ensuite lu par un script Python qui le met en forme avec Matplotlib.</p>
+                        <p>Apparemment, j'ai mis quelques jours à trouver mon rythme.</p>
+                    </div>
+                    <div class="column col-12">
+                        <figure class="figure">
+                            <img class="img-responsive p-centered" src="img/100.png" alt="the result figure">
+                            <figcaption class="figure-caption text-center">Le graphe de résultats</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </article>
+            </section>
+        </div> <!-- column -->
+{% endblock %}
