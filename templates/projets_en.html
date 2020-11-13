@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Projects{% endblock %}
+{% block breadcrumbs %}
+                  <li class="breadcrumb-item">
+                    <a href="projets.html">Projects</a>
+                  </li>
+{% endblock %}
+{% block content %}
+        <div class="column col-11 col-mx-auto">
+            <section class="text-justify">
+                <p>I mainly code in Python (or Bash, if the projects is just a handful of scripts and Python doesn't add much). When I need a webserver, I use Python/Flask.</p>
+                <p>My environment consists of Linux (<a href="https://github.com/VJean/dotfiles">here are my dotfiles</a>), vim, Sublime Text, Pycharm, and a Raspberry. And StackOverflow, of course.</p>
+                <p>More recently, I've been interested in learning Rust, and graph-oriented databases, via Neo4j.</p>
+                <p>Generally speaking, when I start a new project :
+                <ol>
+                    <li>A solution may already be there, but I'd prefer to learn by creating it myself, and deploying it my way</li>
+                    <li>It's an occasion to learn new languages, Python modules or coding techniques</li>
+                    <li>It will probably be useful, at least to me</li>
+                </ol></p>
+
+<!-- Un article = un titre, une date, un lien vers Github, le(s) language(s), ce que j'ai appris, et la présentation en elle-même -->
+            <article>
+                <h3>qhls &ndash; Quick HTTP Logs Stats <small>(november 2020)</small></h3>
+                <p><a href="https://github.com/VJean/qhls"><i class="fab fa-github-square"></i> VJean/qhls.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">pandas</small>
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>A script that displays stats about connections from logs of a HTTP server.</p>
+                        <p>Reads each line, extracts fields with a regular expression, and builds data structures to manipulate them with the pandas module.</p>
+                    </div>
+                    <div class="column col-12">
+                        <figure class="figure">
+                            <img class="img-responsive p-centered" src="img/qhls.png" alt="qhls output">
+                            <figcaption class="figure-caption text-center">An example of a qhls run</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h3>weather-summary &#9925; <small>(end of 2019)</small></h3>
+                <p><a href="https://github.com/VJean/weather-summary"><i class="fab fa-github-square"></i> VJean/weather-summary.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">Pushover</small> <small class="label label-rounded">API</small></p>
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>Every morning, a script in a crontab sends me the weather forecast for the next 24 hours.</p>
+                        <p>The script is configured by a .ini file, which allows the latitude and longitude, the units or even the language of the forecast to be changed.</p>
+                    </div>
+                    <div class="column col-12">
+                        <figure class="figure">
+                            <img class="img-responsive p-centered" src="img/weather.png" alt="weather noti">
+                            <figcaption class="figure-caption text-center">Example of notifications</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h3>100 <small>(May 2020)</small></h3>
+                <p><a href="https://github.com/VJean/100"><i class="fab fa-github-square"></i> VJean/100.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">matplotlib</small></p>
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>Really small project during the 2020 quarantine, where I decided to plot my workout results.</p>
+                        <p>I wrote down the timings in a csv file, and then parsed it with Python and Matplotlib.</p>
+                        <p>It seems like I needed a few days to find a good rythm.</p>
+                    </div>
+                    <div class="column col-12">
+                        <figure class="figure">
+                            <img class="img-responsive p-centered" src="img/100.png" alt="the result figure">
+                            <figcaption class="figure-caption text-center">The plot</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </article>
+            </section>
+        </div> <!-- column -->
+{% endblock %}

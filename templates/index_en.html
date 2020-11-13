@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+{% block content %}
+        <div class="column col-11 col-mx-auto">
+            <section class="text-justify">
+                <p>Hi there ! &#128075;</p>
+                <p>My name is Jean.</p>
+                <p>I'm an engineer with a 5-year-degree in Computer Science, from the University of Technology of Compiègne, France. Since 2017, I've been working on projects that mainly focus on indexing and storing large amounts of data, by doing R&D tasks, developing or integrating services, monitoring them, and running them in production.</p>
+                <p>On this website you'll find a quick overview of my past experiences, and articles about some of my personal projects.</p>
+                <p>You can get in touch with me on <a href="https://www.linkedin.com/in/jeanvintache">LinkedIn</a> or via e-mail, at the adress <code>firstname@lastname.eu</code>, by replacing the <code>firstname</code> and <code>lastname</code>, with&#8230; mine.</p>
+                <p class="text-center">Have a look around !</p>
+            </section>
+        </div> <!-- column -->
+        <div class="column col-6 col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">How did I get here</div>
+                <div class="card-subtitle text-gray">Take a look at my past experiences</div>
+              </div>
+              <div class="card-footer">
+                <a href="en/parcours.html" class="btn btn-primary"><i class="icon icon-forward"></i> See</a>
+              </div>
+            </div>
+        </div>
+        <div class="column col-6 col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title h5">My own <small>(little)</small> projects</div>
+                <div class="card-subtitle text-gray">Articles about some of my projects</div>
+              </div>
+              <div class="card-footer">
+                <a href="en/projets.html" class="btn btn-primary"><i class="icon icon-forward"></i> See</a>
+              </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="utf-8">
+    <title>Jean Vintache &middot; {% block title %}{% endblock %}</title>
+    {% if site_local %}
+    <base href="file:///home/jean/git/vjean.github.io/">
+    {% else %}
+    <base href="https://jean.vintache.eu/">
+    {% endif %}
+    <link rel="stylesheet" href="css/spectre.css">
+    <link rel="stylesheet" href="css/spectre-exp.min.css">
+    <link rel="stylesheet" href="css/spectre-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fa/css/all.css">
+</head>
+<body>
+    <header>
+        <div class="container grid-lg">
+            <div class="columns" id="header-banner">
+            <div class="column text-left hide-md col-6">
+                <h2>Jean Vintache</h2>
+            </div> <!-- title -->
+            <div class="column text-right hide-md col-6">
+                <a href="https://github.com/VJean" class="btn btn-lg btn-link tooltip tooltip-bottom" data-tooltip="Github">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jeanvintache" class="btn btn-lg btn-link tooltip tooltip-bottom" data-tooltip="LinkedIn">
+                    <i class="fab fa-linkedin-in fa-lg"></i>
+                </a>
+            </div> <!-- links -->
+            <div class="column text-center show-md col-md-12">
+                <h2>Jean Vintache</h2>
+            </div> <!-- title -->
+            <div class="column text-center show-md col-md-12">
+                <a href="https://github.com/VJean" class="btn btn-lg btn-link tooltip tooltip-bottom" data-tooltip="Github">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/jeanvintache" class="btn btn-lg btn-link tooltip tooltip-bottom" data-tooltip="LinkedIn">
+                    <i class="fab fa-linkedin-in fa-lg"></i>
+                </a>
+            </div> <!-- links -->
+            </div> <!-- columns -->
+
+            <div class="columns col-gapless">
+            <div class="column text-left">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item">
+                      {% if lang == 'fr' %}
+                      <a href="index.html">&#127968;</a>
+                      {% elif lang == 'en' %}
+                      <a href="en/index.html">&#127968;</a>
+                      {% endif %}
+                  </li>
+                {% block breadcrumbs %}{% endblock %}
+                </ul>
+            </div> <!-- breadcrumbs -->
+            <div class="column col-2 text-right">
+                <a href="index.html" class="btn btn-link">FR</a><span>/</span><a href="en/index.html" class="btn btn-link">EN</a>
+            </div> <!-- lang switcher -->
+            <div class="column col-1 text-right">
+                <button  id="theme-switcher" class="btn btn-link tooltip tooltip-left" data-tooltip="Theme">
+                    <i class="fas fa-adjust"></i>
+                </button>
+            </div> <!-- theme switcher -->
+            </div> <!-- columns -->
+        </div>
+    </header>
+    <div class="container centered grid-lg"> <!-- main container -->
+    <div class="columns">
+        {% block content %}
+        {% endblock %}
+    </div> <!-- columns -->
+</div> <!-- main container -->
+<footer>
+    <div class="container grid-lg">
+        <div class="columns">
+            <div class="column col-12 text-center">
+                <p>Jean Vintache &copy; 2020</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script>
+    /*** Color scheme
+    First check for local preference in localStorage
+    then check @prefers-color-scheme media
+
+    Website's toggle changes the theme and stores it in localStorage
+    Changing preferred color scheme from the OS resets the localStorage and sets the theme accordingly.
+    ***/
+
+
+    function get_current_theme() {
+        return localStorage.getItem('theme');
+    }
+
+    function setDarkMode() {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+
+    function setLightMode() {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    function activateDarkMode() {
+        console.log('You changed your preferred color scheme system-wide to dark. Also removing local preference from localStorage.');
+        setDarkMode();
+        localStorage.removeItem('theme');
+    }
+
+    function activateLightMode() {
+        console.log('You changed your preferred color scheme system-wide to light. Also removing local preference from localStorage.');
+        setLightMode();
+        localStorage.removeItem('theme');
+    }
+
+    function switchTheme(e) {
+        const currentTheme = get_current_theme();
+        console.log('Switching theme, and storing local preference in localStorage.');
+
+        if (currentTheme === 'light') {
+            setDarkMode();
+            localStorage.setItem('theme', 'dark');
+        }
+        else {
+            setLightMode();
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    const currentTheme = get_current_theme()
+
+    if (currentTheme) {
+        console.log('Setting theme from local storage.')
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    } else {
+        const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches;
+        const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches;
+        const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified;
+
+        if(isDarkMode) {
+            console.log('Setting dark theme from @prefers-color-scheme media.')
+            setDarkMode();
+        }
+        if(isLightMode) {
+            console.log('Setting light theme from @prefers-color-scheme media.')
+            setLightMode();
+        }
+        if(isNotSpecified || hasNoSupport) {
+            console.log('You specified no preference for a color scheme or your browser does not support it. Default is dark.');
+            setDarkMode();
+        }
+    }
+
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && activateDarkMode())
+    window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && activateLightMode())
+
+    const theme_button = document.querySelector('#theme-switcher');
+    theme_button.addEventListener('click', switchTheme, false);
+
+</script>
+</html>

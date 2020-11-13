@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 {% block title %}Projets{% endblock %}
 {% block breadcrumbs %}
                   <li class="breadcrumb-item">
@@ -19,6 +19,22 @@
                 </ol></p>
 
 <!-- Un article = un titre, une date, un lien vers Github, le(s) language(s), ce que j'ai appris, et la présentation en elle-même -->
+            <article>
+                <h3>qhls &ndash; Quick HTTP Logs Stats <small>(novembre 2020)</small></h3>
+                <p><a href="https://github.com/VJean/qhls"><i class="fab fa-github-square"></i> VJean/qhls.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">pandas</small>
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>Un script qui affiche quelques informations de connexions à partir de logs d'un serveur HTTP.</p>
+                        <p>Lit chaque ligne, extrait des champs d'intérêt avec une expression régulière, et construit des structures pour les manipuler avec la libraire pandas.</p>
+                    </div>
+                    <div class="column col-12">
+                        <figure class="figure">
+                            <img class="img-responsive p-centered" src="img/qhls.png" alt="qhls output">
+                            <figcaption class="figure-caption text-center">Un exemple d'éxecution de qhls</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </article>
             <article>
                 <h3>weather-summary &#9925; <small>(fin 2019)</small></h3>
                 <p><a href="https://github.com/VJean/weather-summary"><i class="fab fa-github-square"></i> VJean/weather-summary.git</a> <small class="label label-rounded">Python</small> <small class="label label-rounded">Pushover</small> <small class="label label-rounded">API</small></p>
