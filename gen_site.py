@@ -3,12 +3,12 @@
 import os
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-base_dir = os.path.dirname(__file__)
+base_dir = os.path.dirname(os.path.abspath(__file__))
 template_dir = '%s/templates/' % base_dir
 target_dir = "/home/jean/git/vjean.github.io"
 
 env = Environment(
-    loader=FileSystemLoader('%s/templates/' % os.path.dirname(__file__)),
+    loader=FileSystemLoader(template_dir),
     autoescape=select_autoescape(['html', 'xml']),
     trim_blocks=True, lstrip_blocks=True
 )
